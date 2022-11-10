@@ -22,7 +22,7 @@ module.exports = function(query, res) {
     let y = "#"+ query.method + "#"+ query.path;
     // query
     if (query.param) {
-        y += "#" + qs.stringify(query.param);
+        y += "#" + decodeURIComponent(qs.stringify(query.param));
     }
     // body
     if (query.body && query.body != {}) {
