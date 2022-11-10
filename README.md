@@ -10,93 +10,36 @@ node server.js
 ```
 
 ## test
-### GET `http://localhost:8888/data/api/v1/getMarketConfig`
+### GET `http://localhost:8888/v4/order/:orderId`
 
-### GET `http://localhost:8888/data/api/v1/getKLine`
-> Params: `market=btc_usdt&type=15min&since=0`
+### GET `http://localhost:8888/v4/order`
+> Params: `orderId=156201996458139136`
 
-### GET `http://localhost:8888/data/api/v1/getTicker`
-> Params: `market=btc_usdt`
+### POST `http://localhost:8888/v4/order`
+> Params: `{"symbol":"XT_USDT","side":"BUY","bizType":"SPOT","quantity":2,"price":3,"type":"LIMIT","timeInForce":"GTC"}`
 
-### GET `http://localhost:8888/data/api/v1/getTickers`
+### DELETE `http://localhost:8888/v4/order/:orderId`
 
-### GET `http://localhost:8888/data/api/v1/getDepth`
-> Params: `market=btc_usdt`
+### GET `http://localhost:8888/v4/batch-order`
+> Params: `{"orderIds": "156201996458139136,12312313212"}`
 
-### GET `http://localhost:8888/data/api/v1/getTrades`
-> Params: `market=btc_usdt`
+### DELETE `http://localhost:8888/v4/batch-order`
+> Params: `{"orderIds":[156201996458139136,12312313212],"clientBatchId":"123123111"}`
 
-### GET `http://localhost:8888/trade/api/v1/getServerTime`
+### GET `http://localhost:8888/v4/open-order`
 
-### GET `http://localhost:8888/trade/api/v1/getBalance`
+### DELETE `http://localhost:8888/v4/open-order`
+> Body: `{"bizType":"SPOT"}`
 
-### GET `http://localhost:8888/trade/api/v1/getAccounts`
+### GET `http://localhost:8888/v4/history-order`
+> Params: `{"bizType":"SPOT"}`
 
-### GET `http://localhost:8888/trade/api/v1/getFunds`
-> Params: `account=2`
 
-### POST `http://localhost:8888/trade/api/v1/order`
-> Content-Type: `application/x-www-form-urlencoded` or `application/json`
-```json
-{
-    "market": "btc_usdt",
-    "price": 62317.02,
-    "number": 0.596852,
-    "type": 1,
-    "entrustType": 0
-}
-```
+### GET `http://localhost:8888/v4/trade`
+> Params: `{"bizType":"SPOT"}`
 
-### POST `http://localhost:8888/trade/api/v1/batchOrder?market=btc_usdt`
-> Content-Type: `application/x-www-form-urlencoded` or `application/json`
-```json
-[
-    {
-        "price": 62317.02,
-        "amount": 1,
-        "type": 0
-    }, {
-        "price": 62317.02,
-        "amount": 2,
-        "type": 0
-    } 
-]
-```
+### GET `http://localhost:8888/v4/balance`
+> Params: `{"currency":"usdt"}`
 
-### POST `http://localhost:8888/trade/api/v1/cancel`
-> Content-Type: `application/x-www-form-urlencoded` or `application/json`
-```json
-{
-  "market": "btc_usdt",
-  "id": "6861566319764418560"
-}
-```
-
-### POST `http://localhost:8888/trade/api/v1/batchCancel?market=btc_usdt`
-> Content-Type: `application/x-www-form-urlencoded` or `application/json`
-```json
-[
-  "6861566319764418560",
-  "6861566319764418561",
-  "6861566152621404160"
-]
-```
-
-### GET `http://localhost:8888/trade/api/v1/getOrder`
-> Params: `market=btc_usdt&id=6847812400960688128`
-
-### GET `http://localhost:8888/trade/api/v1/getOpenOrders`
-> Params: `market=btc_usdt&page=1&pageSize=10`
-
-### POST `http://localhost:8888/trade/api/v1/getBatchOrders?market=btc_usdt`
-> Content-Type: `application/x-www-form-urlencoded` or `application/json`
-```json
-[
-  "6861566319764418560",
-  "6861566319764418561",
-  "6861566152621404160"
-]
-```
-
-### GET `http://localhost:8888/trade/api/v1/myTrades`
-> Params: `market=btc_usdt`
+### GET `http://localhost:8888/v4/balances`
+> Params: `{"currencies":"btc,usdt"}`
