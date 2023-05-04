@@ -17,8 +17,7 @@ Api(app);
 
 app.get('/', function (req, res) {
   console.log("Hello World");
-  res.send('Hello World')
-  ;
+  res.send('Hello World');
 });
 
 
