@@ -22,7 +22,8 @@ module.exports = function(query, res) {
     let y = "#"+ query.method + "#"+ query.path;
     // query
     if (query.param) {
-        y += "#" + decodeURIComponent(qs.stringify(query.param));
+        // y += "#" + decodeURIComponent(qs.stringify(query.param));
+        y += "#" + decodeURIComponent(qs.stringify(query.param, {sort:(a, b) => a.localeCompare(b)}));
     }
     // body
     if (query.body && query.body != {}) {
