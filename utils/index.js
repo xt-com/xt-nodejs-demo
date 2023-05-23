@@ -11,10 +11,10 @@ module.exports = function(query, res) {
     const window = "6000";
     const time = new Date().getTime();
     const xtHeaders = {
-        'xt-validate-algorithms': encry,
-        'xt-validate-appkey': Config.appkey,
-        'xt-validate-recvwindow': window,
-        'xt-validate-timestamp': time,
+        'validate-algorithms': encry,
+        'validate-appkey': Config.appkey,
+        'validate-recvwindow': window,
+        'validate-timestamp': time,
     }
 
     // Signature
@@ -41,7 +41,7 @@ module.exports = function(query, res) {
         method: query.method,
         headers: {
             ...xtHeaders,
-            'xt-validate-signature': signature
+            'validate-signature': signature
         },
         body: query.body || null,
         json: true,
