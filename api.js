@@ -149,4 +149,37 @@ module.exports = function (app) {
       param: req.query,  
     }, res );
   });
+
+  // future demo
+  app.get('/future/order', function (req, res) {
+    // Test
+    body = {"symbol":"btc_usdt","orderSide":"BUY","origQty":211,"price":65201,"orderType":"LIMIT","timeInForce":"GTC", "positionSide": "LONG"}
+
+    return RequestApi({
+      path: "/future/trade/v1/order/create",
+      ContentType: "application/json",
+      method: "POST",
+      body: body,
+      apiType: 'fapi'
+    }, res );
+
+  });
+
+  app.get('/future/create-batch', function (req, res) {
+    // Test
+    let orderList = [
+      {"symbol":"btc_usdt","orderSide":"BUY","origQty":311,"price":64201,"orderType":"LIMIT","timeInForce":"GTC", "positionSide": "LONG"},
+      {"symbol":"eth_usdt","orderSide":"BUY","origQty":411,"price":3200,"orderType":"LIMIT","timeInForce":"GTC", "positionSide": "LONG"}
+    ]
+
+    return RequestApi({
+      path: "/future/trade/v1/order/create-batch",
+      ContentType: "application/x-www-form-urlencoded",
+      method: "POST",
+      batchBody: orderList,
+      apiType: 'fapi'
+    }, res );
+
+  });
+
 }
